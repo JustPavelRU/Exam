@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Exam</title>
+	
+	<style>
+		div {
+			background: black;
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="square"></div>
+	<script>		
+		// Вопрос 1 //
+		
+		var text = prompt('Введите слова через пробел: ');
+		alert(text.match(/[а-я]+/g));
+		var delText = prompt('Какое слово надо удалить?');
+		
+		function deleteWord(text, delText) {
+			let finText = "";
+			text = text.match(/[а-я]+/g);
+			for (let i = 0; i < text.length; i++) {
+				if (text[i] != delText) {finText += text[i] + " "}
+				else {delete text[i]}
+			}
+			return finText;
+		}
+		
+		alert(deleteWord(text, delText));
+		
+		// Вопрос 2 //
+		
+		var size = 300;
+		var dx = -2;
+		
+		var square = document.getElementById("square");
+		square.addEventListener("click", function() {
+			alert("Вы нажали внутри квадрата!");
+			setTimeout(tick(), 1000);
+			dx *= -1;
+		});
+		
+		function tick() {
+			setInterval(function(){
+				size += dx;
+				square.style.width = String(size) + 'px';
+				square.style.height = String(size) + 'px';
+			}, 100);
+		}
+	</script>
+</body>
+</html>
